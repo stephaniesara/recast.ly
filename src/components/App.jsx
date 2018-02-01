@@ -8,12 +8,10 @@ class App extends React.Component {
     };
   }
   
-  handleSelect(event) {
-    console.log('select');
+  handleSelect(video) {
     this.setState({
-      selected: event.target.value
+      selected: video
     });
-    
   }
   
   render() {
@@ -21,7 +19,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><h5><em>search</em> view goes here</h5></div>
+            <Search />
           </div>
         </nav>
         <div className="row">
@@ -29,7 +27,7 @@ class App extends React.Component {
             <VideoPlayer video={this.state.selected}/>
           </div>
           <div className="col-md-5">
-            <VideoList videos={this.state.videos} />
+            <VideoList videos={this.state.videos} onSelect={this.handleSelect.bind(this)}/>
           </div>
         </div>
       </div>
