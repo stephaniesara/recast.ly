@@ -6,6 +6,7 @@ class App extends React.Component {
       videos: exData,
       selected: exData[0]
     };
+    this.handleQuery('');
   }
   
   handleSelect(video) {
@@ -14,12 +15,28 @@ class App extends React.Component {
     });
   }
   
+  handleQuery(query) {
+    var options = {
+      key: window.YOUTUBE_API_KEY,
+      part: 'snippet',
+      query: query,
+      max: 5
+    };
+    var cb = (videos) => { 
+      this.setState({
+        videos: videos,
+        selected: videos[0]
+      });
+    };
+    this.props.searchYouTube(options, cb);
+  }
+  
   render() {
     return (
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search />
+            <Search onSubmit={this.handleQuery.bind(this)}/>
           </div>
         </nav>
         <div className="row">
@@ -38,6 +55,7 @@ class App extends React.Component {
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
 window.App = App;
+
 
 var exData = [{
   kind: 'youtube#searchResult',
