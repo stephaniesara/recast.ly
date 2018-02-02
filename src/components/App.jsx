@@ -6,7 +6,7 @@ class App extends React.Component {
       videos: [],
       selected: {}
     };
-    this.handleQuery = _.debounce(this.handleQuery, 500, true);
+    this.handleQuery = _.debounce(this.handleQuery, 200, true);
   }
   
   componentDidMount() {
