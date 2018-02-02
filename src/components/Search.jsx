@@ -14,11 +14,12 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search-bar form-inline">
-        <input className="form-control" onKeyPress={(event)=>
-          this.handleInput( (event.key === 'Enter' ? true : false))
-        }/>
+        <input 
+          className="form-control" 
+          onKeyPress={(e) => this.handleInput( (e.key === 'Enter' ? true : false))
+          }/>
         <button className="btn hidden-sm-down" onClick={()=>
-          this.handleInput( true)
+          this.handleInput(true)
         }>
           <span className="glyphicon glyphicon-search"></span>
         </button>

@@ -10,7 +10,7 @@ class App extends React.Component {
   }
   
   componentDidMount() {
-    this.handleQuery('', true);
+    this.handleQuery('puppies gifs', true);
   }
   
   
@@ -22,9 +22,8 @@ class App extends React.Component {
   
   handleQuery(query, bool) {
     var options = {
-      key: window.YOUTUBE_API_KEY,
+      key: this.props.API_KEY,
       query: query,
-      max: 5
     };
     var cb = (videos) => {
       if (bool) { 
