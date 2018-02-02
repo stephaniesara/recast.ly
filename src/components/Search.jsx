@@ -1,8 +1,10 @@
 var Search = (props) => (
   <div className="search-bar form-inline">
-    <input className="form-control"/>
+    <input className="form-control" onKeyUp={()=>
+      props.onSubmit($('.form-control')[0].value, false)
+    }/>
     <button className="btn hidden-sm-down" onClick={()=>
-      props.onSubmit($('.form-control')[0].value)
+      props.onSubmit($('.form-control')[0].value, true)
     }>
       <span className="glyphicon glyphicon-search"></span>
     </button>
